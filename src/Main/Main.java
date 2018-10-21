@@ -1,10 +1,9 @@
 package Main;
-import business.*;
-import team.*;
+import business.SoftwareCompany;
 
 public class Main {
     public static void main(String[] args) {
-        Director director = new Director();
-        Manager manager = new Manager();
+        SoftwareCompany SWC = new SoftwareCompany();
+        SWC.runTheCompany();
     }
 }

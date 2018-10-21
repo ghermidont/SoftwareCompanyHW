@@ -2,12 +2,10 @@ package team;
 
 public class Tester {
 
-    public String       fullname;   // полное имя
-    public int          experience; // опыт работы (лет)
-    public int          age;        // возраст (лет!!!)
-    public float        salary;     // текущая заработная плата (в у.е.!!!)
-    public String       technology; // название языка программирования, которым владеет (например Java, Python,...)
-    // добавить конструктор и методы, указанные выше
+    private String fullname;
+    private int experience;
+    private int age;
+    private float salary;
 
     public Tester(String   fullname, int experience, int age, float salary){
         this.fullname = fullname;
@@ -17,15 +15,22 @@ public class Tester {
 
     }
 
-    public void incrementSalary() {
-        //оторый каждый раз, когда он применяется,
-        // увеличивает заработную плату на 3% + 0.5%
-        // за каждый год опыта работы в данной области.
+    private void incrementSalary() {
+        float extraForExperience = (salary * 0.005f) * experience;
+        salary = salary * ((salary * 0.03f) + extraForExperience);
+
+    }
+
+    public float getSalary(){
+        incrementSalary();
+        return this.salary;
     }
 
     @Override
     public String toString(){
-        // return
+        return "Position: Tester\n" + "Full name: " + fullname + "\n" +
+                "Work experience: " + experience + " years\n" + "Age: "+
+                age + " years\nMonthly salary: " + salary + " EUR\n\n";
     }
 
 }

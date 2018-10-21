@@ -2,31 +2,32 @@ package business;
 
 public class Manager {
 
-    public String       fullname;   // полное имя
-    public int          experience; // опыт работы (лет)
-    public int          age;        // возраст (лет!!!)
-    public float        salary;     // текущая заработная плата (в у.е.!!!)
-    public Programmer   lead_developer;  // Объект тип Programmer - элитный разработчик в команде
-    public Programmer   senior_developer;// Объект тип Programmer - ведущий (senior) разработчик в команде
-    public Programmer   junior_developer;// Объект тип Programmer - младший (junior) разработчик в команде
-    public Tester       quality_guy;     // Объект тип Tester - тестировщик в команде
-    // добавить конструктор и методы, указанные выше
+    private String fullname;
+    private int experience;
+    private int age;
+    private float salary;
 
-    public Manager(String   fullname, int experience, int age, float salary){
+    public Manager(String fullname, int experience, int age, float salary){
         this.fullname = fullname;
         this.experience = experience;
         this.age = age;
         this.salary = salary;
-
     }
 
-    public void incrementSalary() {
-        //который каждый раз, когда он применяется,
-        // увеличивает заработную плату на 15%.
+    private void incrementSalary() {
+        float extraForExperience = (salary * 0.01f) * experience;
+        salary = salary * ((salary * 0.15f) + extraForExperience);
     }
+
+    public float getSalary(){
+        incrementSalary();
+        return this.salary; }
 
     @Override
     public String toString(){
-        // return
+        return "Position: Manager\n" + "Full name: " + fullname + "\n" +
+                "Work experience: " + experience + " years\n" + "Age: "+
+                age + " years\nMonthly salary: " + salary + " EUR\n\n";
     }
+
 }

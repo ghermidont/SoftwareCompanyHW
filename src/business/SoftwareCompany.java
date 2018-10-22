@@ -6,27 +6,18 @@ public class SoftwareCompany {
 
     private Scanner getOptions = new Scanner(System.in);
     private final String companyName = "\"Microhard\" ltd";
-    private final int yearOfFoundation = 1998;
 
-    private companyAddress companyAddress;
-    private companyContacts companyContacts;
-    public Director director;
-    private Manager manager;
-    private Programmer lead_developer;
-    private Programmer senior_developer;
-    private Programmer junior_developer;
-    private Tester tester;
+    // Objects initialization
+    private companyAddress companyAddress = new companyAddress();
+    private companyContacts companyContacts = new companyContacts();;
+    private Director director= new Director("Bill Doors", 15, 46, 1500.0f);;
+    private Manager manager = new Manager("John Smith", 9, 39, 1200.0f);;
+    private Programmer lead_developer = new Programmer("Lead_developer","Addy Kim", 10, "Java", 40, 1100.0f);;
+    private Programmer senior_developer = new Programmer("Senior developer","Tommy Lee", 7, "Python", 30, 1000.0f);;
+    private Programmer junior_developer= new Programmer("Junior developer","Kirk Jordison", 4, "C#", 27, 950.0f);;
+    private Tester tester = new Tester("Ion Avasiloaie", 2, 26, 500.0f);;
 
-    public SoftwareCompany(){
-        this.companyAddress = new companyAddress();
-        this.companyContacts = new companyContacts();
-        this.director = new Director("Bill Doors", 15, 46, 1500.0f);
-        this.manager = new Manager("John Smith", 9, 39, 1200.0f);
-        this.lead_developer = new Programmer("Lead_developer","Addy Kim", 10, "Java", 40, 1100.0f);
-        this.senior_developer = new Programmer("Senior developer","Tommy Lee", 7, "Python", 30, 1000.0f);
-        this.junior_developer = new Programmer("Junior developer","Kirk Jordison", 4, "C#", 27, 950.0f);
-        this.tester = new Tester("Ion Avasiloaie", 2, 26, 500.0f);
-    }
+
 
     private class companyAddress {
         private String country = "Republic of Moldova";
@@ -51,7 +42,6 @@ public class SoftwareCompany {
             return "COMPANY CONTACTS: " + "\ntel. numb: " + telNumber + "\nPostal Code: " + ZIPcode + "\nEmail: " +
                     email + "\n";
         }
-
     }
 
     private void showMembers() {
@@ -73,7 +63,7 @@ public class SoftwareCompany {
 
     private void choiceSwitch() {
         int optionsGetter = getOptions.nextInt();
-
+        final int yearOfFoundation = 1998;
         switch (optionsGetter) {
             case 1: {
                 System.out.println("\n" + companyName + " was founded in " + yearOfFoundation + " by " + director.getFullname() + ".\n" +
